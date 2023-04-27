@@ -13,12 +13,15 @@ Which including:
 mix new TARGET --app explixir --umbrella
 ```
 
-### Phoenix Application
+### Phoenix Web Application
 ```zsh
-mix phx.new.web bff --no-assets # Creates a new Phoenix web project within an umbrella project
-mix phx.new.ecto org            # Creates a new Ecto project within an umbrella project
+# Creates a new Phoenix web project within an umbrella project
+mix phx.new.web bff --no-html --no-assets --no-esbuild --no-mailer --module BffEnd
+# Creates a new Ecto project within an umbrella project
+mix phx.new.ecto org --module OrgEcto
 ```
-#### Further Conduction
+
+### Further Conduction
 1. Ecto
 ```zsh
 We are almost there! The following steps are missing:
@@ -28,10 +31,7 @@ We are almost there! The following steps are missing:
 Then configure your database in config/dev.exs and run:
 
     $ mix ecto.create
-
-You can run your app inside IEx (Interactive Elixir) as:
-
-    $ iex -S mix
+    ...
 ```
 
 2. BFF
@@ -50,8 +50,5 @@ the PubSub in your supervision tree as:
 Start your Phoenix app with:
 
     $ mix phx.server
-
-You can also run your app inside IEx (Interactive Elixir) as:
-
-    $ iex -S mix phx.server
+    ...
 ```
