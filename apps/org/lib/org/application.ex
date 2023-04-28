@@ -1,4 +1,4 @@
-defmodule Org.Application do
+defmodule OrgEcto.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -9,15 +9,15 @@ defmodule Org.Application do
   def start(_type, _args) do
     children = [
       # Start the Ecto repository
-      Org.Repo,
+      OrgEcto.Repo,
       # Start the PubSub system
-      {Phoenix.PubSub, name: Org.PubSub},
+      {Phoenix.PubSub, name: OrgEcto.PubSub},
       # Start Finch
-      {Finch, name: Org.Finch}
-      # Start a worker by calling: Org.Worker.start_link(arg)
-      # {Org.Worker, arg}
+      {Finch, name: OrgEcto.Finch}
+      # Start a worker by calling: OrgEcto.Worker.start_link(arg)
+      # {OrgEcto.Worker, arg}
     ]
 
-    Supervisor.start_link(children, strategy: :one_for_one, name: Org.Supervisor)
+    Supervisor.start_link(children, strategy: :one_for_one, name: OrgEcto.Supervisor)
   end
 end
