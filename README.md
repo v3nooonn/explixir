@@ -15,10 +15,17 @@ mix new TARGET --app explixir --umbrella
 
 ### Phoenix Web Application
 ```zsh
-# Creates a new Phoenix web project within an umbrella project
-mix phx.new.web bff --no-html --no-assets --no-esbuild --no-mailer --module BffEnd
-# Creates a new Ecto project within an umbrella project
-mix phx.new.ecto org --app Organization --module OrgEcto
+# Notes:
+# 1. Mix requires the directory to match the application name for umbrella apps.
+# 2. An error occurred: (Mix) Formatter plugin Phoenix.LiveView.HTMLFormatter cannot be found
+#   Remove the plugins in `.formatter.exs` file in project root path.
+
+# Creates a new Ecto project within an umbrella project.
+# The name of the dir, application name should the same as mentioned above,
+#   as for the module name, looks like as we want.
+mix phx.new.ecto org --app org --module OrgEcto
+# Creates a new Phoenix web API project within an umbrella project.
+mix phx.new.web bff --app bff --module BffEnd --no-html --no-assets --no-esbuild --no-mailer --no-ecto
 ```
 
 ### Further Conduction
