@@ -18,7 +18,7 @@ mix new TARGET --app explixir --umbrella
 # Creates a new Phoenix web project within an umbrella project
 mix phx.new.web bff --no-html --no-assets --no-esbuild --no-mailer --module BffEnd
 # Creates a new Ecto project within an umbrella project
-mix phx.new.ecto org --module OrgEcto
+mix phx.new.ecto org --app Organization --module OrgEcto
 ```
 
 ### Further Conduction
