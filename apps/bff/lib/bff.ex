@@ -1,12 +1,12 @@
-defmodule BffEnd do
+defmodule BFFView do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, components, channels, and so on.
 
   This can be used in your application as:
 
-      use BffEnd, :controller
-      use BffEnd, :html
+      use BFFView, :controller
+      use BFFView, :html
 
   The definitions below will be executed for every controller,
   component, etc, so keep them short and clean, focused
@@ -39,10 +39,9 @@ defmodule BffEnd do
     quote do
       use Phoenix.Controller,
         formats: [:html, :json],
-        layouts: [html: BffEnd.Layouts]
+        layouts: [html: BFFView.Layouts]
 
       import Plug.Conn
-      import BffEnd.Gettext
 
       unquote(verified_routes())
     end
@@ -51,9 +50,9 @@ defmodule BffEnd do
   def verified_routes do
     quote do
       use Phoenix.VerifiedRoutes,
-        endpoint: BffEnd.Endpoint,
-        router: BffEnd.Router,
-        statics: BffEnd.static_paths()
+        endpoint: BFFView.Endpoint,
+        router: BFFView.Router,
+        statics: BFFView.static_paths()
     end
   end
 

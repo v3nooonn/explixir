@@ -1,4 +1,4 @@
-defmodule BffEnd.MixProject do
+defmodule BFFView.MixProject do
   use Mix.Project
 
   def project do
@@ -22,7 +22,7 @@ defmodule BffEnd.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {BffEnd.Application, []},
+      mod: {BFFView.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -37,13 +37,12 @@ defmodule BffEnd.MixProject do
   defp deps do
     [
       {:phoenix, "~> 1.7.2"},
-      {:phoenix_live_dashboard, "~> 0.7.2"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
-      {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:org_ecto, in_umbrella: true}
+      {:hackney, "~> 1.9"},
+      {:org, in_umbrella: true}
     ]
   end
 

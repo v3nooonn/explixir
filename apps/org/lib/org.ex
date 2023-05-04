@@ -1,6 +1,6 @@
-defmodule OrgEcto do
+defmodule OrgService do
   @moduledoc """
-  OrgEcto keeps the contexts that define your domain
+  OrgService keeps the contexts that define your domain
   and business logic.
 
   Contexts are also responsible for managing your data, regardless

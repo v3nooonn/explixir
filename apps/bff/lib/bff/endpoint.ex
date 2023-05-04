@@ -1,4 +1,4 @@
-defmodule BffEnd.Endpoint do
+defmodule BFFView.Endpoint do
   use Phoenix.Endpoint, otp_app: :bff
 
   # The session will be stored in the cookie and signed,
@@ -7,11 +7,11 @@ defmodule BffEnd.Endpoint do
   @session_options [
     store: :cookie,
     key: "_bff_key",
-    signing_salt: "Yc6e4cOi",
+    signing_salt: "kFzlfpBC",
     same_site: "Lax"
   ]
 
-  socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
+  # socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -21,17 +21,13 @@ defmodule BffEnd.Endpoint do
     at: "/",
     from: :bff,
     gzip: false,
-    only: BffEnd.static_paths()
+    only: BFFView.static_paths()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do
     plug Phoenix.CodeReloader
   end
-
-  plug Phoenix.LiveDashboard.RequestLogger,
-    param_key: "request_logger",
-    cookie_key: "request_logger"
 
   plug Plug.RequestId
   plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
@@ -44,5 +40,5 @@ defmodule BffEnd.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug BffEnd.Router
+  plug BFFView.Router
 end

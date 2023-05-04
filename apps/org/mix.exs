@@ -1,4 +1,4 @@
-defmodule OrgEcto.MixProject do
+defmodule OrgService.MixProject do
   use Mix.Project
 
   def project do
@@ -22,7 +22,7 @@ defmodule OrgEcto.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {OrgEcto.Application, []},
+      mod: {OrgService.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

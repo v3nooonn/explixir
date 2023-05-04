@@ -1,3 +1,3 @@
-# OrgEcto
+# OrgService
 
 **TODO: Add description**
