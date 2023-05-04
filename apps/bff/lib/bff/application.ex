@@ -1,4 +1,4 @@
-defmodule BffEnd.Application do
+defmodule BFFView.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -9,16 +9,16 @@ defmodule BffEnd.Application do
   def start(_type, _args) do
     children = [
       # Start the Telemetry supervisor
-      BffEnd.Telemetry,
+      BFFView.Telemetry,
       # Start the Endpoint (http/https)
-      BffEnd.Endpoint
-      # Start a worker by calling: BffEnd.Worker.start_link(arg)
-      # {BffEnd.Worker, arg}
+      BFFView.Endpoint
+      # Start a worker by calling: BFFView.Worker.start_link(arg)
+      # {BFFView.Worker, arg}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: BffEnd.Supervisor]
+    opts = [strategy: :one_for_one, name: BFFView.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
@@ -26,7 +26,7 @@ defmodule BffEnd.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    BffEnd.Endpoint.config_change(changed, removed)
+    BFFView.Endpoint.config_change(changed, removed)
     :ok
   end
 end

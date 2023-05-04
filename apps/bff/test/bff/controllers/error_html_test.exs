@@ -1,14 +1,14 @@
-defmodule BffEnd.ErrorHTMLTest do
-  use BffEnd.ConnCase, async: true
+defmodule BFFView.ErrorHTMLTest do
+  use BFFView.ConnCase, async: true
 
   # Bring render_to_string/4 for testing custom views
   import Phoenix.Template
 
   test "renders 404.html" do
-    assert render_to_string(BffEnd.ErrorHTML, "404", "html", []) == "Not Found"
+    assert render_to_string(BFFView.ErrorHTML, "404", "html", []) == "Not Found"
   end
 
   test "renders 500.html" do
-    assert render_to_string(BffEnd.ErrorHTML, "500", "html", []) == "Internal Server Error"
+    assert render_to_string(BFFView.ErrorHTML, "500", "html", []) == "Internal Server Error"
   end
 end

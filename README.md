@@ -11,9 +11,12 @@ Which including:
 ```zsh
 # pwd: ../TARGET
 mix new TARGET --app explixir --umbrella
+# pwd: ./explixir
+mix new . --app explixir --umbrella
 ```
 
 ### Phoenix Web Application
+1. Applications init
 ```zsh
 # Notes:
 # 1. Mix requires the directory to match the application name for umbrella apps.
@@ -25,37 +28,26 @@ mix new TARGET --app explixir --umbrella
 #   as for the module name, looks like as we want.
 mix phx.new.ecto org --app org --module OrgEcto
 # Creates a new Phoenix web API project within an umbrella project.
-mix phx.new.web bff --app bff --module BffEnd --no-html --no-assets --no-esbuild --no-mailer --no-ecto
+mix phx.new.web bff --app bff --module BFFView --no-html --no-assets --no-esbuild --no-mailer --no-ecto --no-tailwind --no-gettext --no-dashboard
+# Not suer about the diff between those two creations
+mix phx.new bff --app bff --module BFFView --no-install --no-html --database postgres --no-live --no-assets --no-dashboard --no-mailer
 ```
 
-### Further Conduction
-1. Ecto
-```zsh
-We are almost there! The following steps are missing:
-
-    $ cd orgs
-
-Then configure your database in config/dev.exs and run:
-
-    $ mix ecto.create
-    ...
+2. Dependency claim
+```elixir
+# In explixir/apps/bff/mix.exs
+# Add two lines below:
+  ...
+  {:hackney, "~> 1.9"},
+  {:org, in_umbrella: true}
 ```
 
-2. BFF
+### Postgres Migration
+1. Generation
 ```zsh
-We are almost there! The following steps are missing:
-
-    $ cd bff
-
-Your web app requires a PubSub server to be running.
-The PubSub server is typically defined in a `mix phx.new.ecto` app.
-If you don't plan to define an Ecto app, you must explicitly start
-the PubSub in your supervision tree as:
-
-    {Phoenix.PubSub, name: Bff.PubSub}
-
-Start your Phoenix app with:
-
-    $ mix phx.server
-    ...
+mix ecto.gen.migration init
+```
+2. Execution
+```zsh
+mix ecto.migrate
 ```

@@ -10,23 +10,23 @@
 import Config
 
 config :bff,
-  namespace: BffEnd,
+  namespace: BFFView,
   generators: [context_app: false]
 
 # Configures the endpoint
-config :bff, BffEnd.Endpoint,
+config :bff, BFFView.Endpoint,
   url: [host: "localhost"],
   render_errors: [
-    formats: [json: BffEnd.ErrorJSON],
+    formats: [json: BFFView.ErrorJSON],
     layout: false
   ],
-  pubsub_server: BffEnd.PubSub,
-  live_view: [signing_salt: "yr5lGm2L"]
+  pubsub_server: BFFView.PubSub,
+  live_view: [signing_salt: "53jrSKsq"]
 
 # Configure Mix tasks and generators
 config :org,
-  namespace: OrgEcto,
-  ecto_repos: [OrgEcto.Repo]
+  namespace: OrgService,
+  ecto_repos: [OrgService.Repo]
 
 # Configures the mailer
 #
@@ -35,7 +35,7 @@ config :org,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :org, OrgEcto.Mailer, adapter: Swoosh.Adapters.Local
+config :org, OrgService.Mailer, adapter: Swoosh.Adapters.Local
 
 # Sample configuration:
 #

@@ -1,4 +1,4 @@
-# BffEnd
+# BFFView
 
 To start your Phoenix server:
 
