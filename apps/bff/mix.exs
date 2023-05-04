@@ -43,7 +43,8 @@ defmodule BffEnd.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:org_ecto, in_umbrella: true}
+      {:hackney, "~> 1.9"},
+      {:org, in_umbrella: true}
     ]
   end
 

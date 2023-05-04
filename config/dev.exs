@@ -13,7 +13,7 @@ config :bff, BffEnd.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "uJZvbeNLazc8Ll5rldbcReDkfTS0IZuQfQQ9WGUH9i+H9ncumhvbZK85Z7VnwCc7",
+  secret_key_base: "98oTfb5IfEev5PYPYVNlJLv1BITVy4wy1BJtpeFs3JKlBNijlX4tnhmMOQRmAhIQ",
   watchers: []
 
 # ## SSL Support
@@ -47,27 +47,7 @@ config :org, OrgEcto.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  database: "org_dev",
-  stacktrace: true,
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
-
-# Configure your database
-config :org, OrgEcto.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "org_dev",
-  stacktrace: true,
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
-
-# Configure your database
-config :org, Org.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "org_dev",
+  database: "explixir",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

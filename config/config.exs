@@ -21,7 +21,7 @@ config :bff, BffEnd.Endpoint,
     layout: false
   ],
   pubsub_server: BffEnd.PubSub,
-  live_view: [signing_salt: "eE/H8eZT"]
+  live_view: [signing_salt: "yr5lGm2L"]
 
 # Configure Mix tasks and generators
 config :org,
@@ -36,33 +36,6 @@ config :org,
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
 config :org, OrgEcto.Mailer, adapter: Swoosh.Adapters.Local
-
-# Configure Mix tasks and generators
-config :org,
-  namespace: OrgEcto,
-  ecto_repos: [OrgEcto.Repo]
-
-# Configures the mailer
-#
-# By default it uses the "Local" adapter which stores the emails
-# locally. You can see the emails in your browser, at "/dev/mailbox".
-#
-# For production it's recommended to configure a different adapter
-# at the `config/runtime.exs`.
-config :org, OrgEcto.Mailer, adapter: Swoosh.Adapters.Local
-
-# Configure Mix tasks and generators
-config :org,
-  ecto_repos: [Org.Repo]
-
-# Configures the mailer
-#
-# By default it uses the "Local" adapter which stores the emails
-# locally. You can see the emails in your browser, at "/dev/mailbox".
-#
-# For production it's recommended to configure a different adapter
-# at the `config/runtime.exs`.
-config :org, Org.Mailer, adapter: Swoosh.Adapters.Local
 
 # Sample configuration:
 #

@@ -7,7 +7,7 @@ defmodule BffEnd.Endpoint do
   @session_options [
     store: :cookie,
     key: "_bff_key",
-    signing_salt: "Yc6e4cOi",
+    signing_salt: "6yFqSijt",
     same_site: "Lax"
   ]
 
