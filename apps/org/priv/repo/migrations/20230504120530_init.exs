@@ -10,7 +10,7 @@ defmodule OrgService.Repo.Migrations.Init do
       timestamps()
     end
 
-    create table(:organization_abbtribute) do
+    create table(:organization_attribute) do
       add :org_id, references(:organization)
       add :home, :string, null: false
       add :avatar, :string, null: false

@@ -1,31 +1,64 @@
 defmodule OrgService.ServiceContext do
   @moduledoc """
-  The Service context of the OrgService
+  The Service Context of the OrgService
   """
 
-  import Ecto.Query, warn: false
+  use OrgService.EctoRelated
+
+  require Logger
 
   alias OrgService.Repo
 
-  alias OrgService.Org.Organization, as: Org
-  alias OrgService.Org.Attribute, as: Attr
+  alias OrgService.Org.Model.Organization, as: Org
+  alias OrgService.Org.Model.Attribute, as: Attr
+
+  @default_preloads []
 
   @doc """
   Find organization basic info by ID
   """
-  def find(id) do
-    ids = id |> Enum.uniq()
+  def find(_, id) do
+    case Repo.find_by_id(Org, id, @default_preloads) do
+      {:ok, record} ->
+        {:ok, %{id: record.id(), name: record.name(), description: record.description()}}
 
-    Org
-    |> where([u], u.id in ^ids)
-    |> Repo.all()
-    |> Map.new(&{&1.id, &1})
+      {:error, :not_found} ->
+        {:error, :not_found}
+    end
   end
 
   @doc """
-  Find organization with attributes by ID
+  Find organization basic info with associations by ID
   """
-  def findWith(id, true) do
-    ids = id |> Enum.uniq()
+  def find_preload(_, id, preloads) do
+    case Repo.find_by_id(Org, id, preloads) do
+      {:ok, record} ->
+        Map.get(record, :attributes)
+        |> Enum.map(fn item ->
+          %{attributes_id: item.id, home: item.home, avatar: item.avatar, version: item.version}
+        end)
+
+        {
+          :ok,
+          %{
+            id: record.id(),
+            name: record.name(),
+            description: record.description(),
+            attributes:
+              Map.get(record, :attributes)
+              |> Enum.map(fn item ->
+                %{
+                  attributes_id: item.id,
+                  home: item.home,
+                  avatar: item.avatar,
+                  version: item.version
+                }
+              end)
+          }
+        }
+
+      {:error, :not_found} ->
+        {:error, :not_found}
+    end
   end
 end
