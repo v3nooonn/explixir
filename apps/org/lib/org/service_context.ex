@@ -32,33 +32,33 @@ defmodule OrgService.ServiceContext do
   """
   def find_preload(_, id, preloads) do
     case Repo.find_by_id(Org, id, preloads) do
-      {:ok, record} ->
-        Map.get(record, :attributes)
-        |> Enum.map(fn item ->
-          %{attributes_id: item.id, home: item.home, avatar: item.avatar, version: item.version}
-        end)
-
-        {
-          :ok,
-          %{
-            id: record.id(),
-            name: record.name(),
-            description: record.description(),
-            attributes:
-              Map.get(record, :attributes)
-              |> Enum.map(fn item ->
-                %{
-                  attributes_id: item.id,
-                  home: item.home,
-                  avatar: item.avatar,
-                  version: item.version
-                }
-              end)
-          }
-        }
+      {:ok, org} ->
+        {:ok, org_vo(org)}
 
       {:error, :not_found} ->
         {:error, :not_found}
     end
+  end
+
+  defp org_vo(org) do
+    %{
+      id: org.id(),
+      name: org.name(),
+      description: org.description(),
+      attributes: attrs_mapping(org)
+    }
+  end
+
+  defp attrs_mapping(org) do
+    org
+    |> Map.get(:attributes)
+    |> Enum.map(fn item ->
+      %{
+        attributes_id: item.id,
+        home: item.home,
+        avatar: item.avatar,
+        version: item.version
+      }
+    end)
   end
 end
