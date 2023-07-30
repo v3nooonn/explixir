@@ -51,3 +51,14 @@ mix ecto.gen.migration init
 ```zsh
 mix ecto.migrate
 ```
+3. Testing
+```zsh
+MIX_ENV=test mix ecto.migrate
+```
+
+### Service Context
+1. Generation
+> Ref: https://hexdocs.pm/phoenix/Mix.Tasks.Phx.Gen.Context.html
+```zsh
+mix phx.gen.context Accounts User users name:string age:integer
+```
