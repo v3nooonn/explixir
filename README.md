@@ -1,6 +1,6 @@
 # Explixir
 
-Experimental Elixir.
+Experimental project based on Phoenix and Elixir.
 
 The experimental repo for Elixir and Phoenix.
 Which including:
