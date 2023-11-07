@@ -42,6 +42,42 @@ mix phx.new bff --app bff --module BFFView --no-install --no-html --database pos
   {:org, in_umbrella: true}
 ```
 
+3. Create Phx Context
+```shell
+mix phx.gen.context Context Entity Table
+```
+- Context: the file name of hte context, The module name could be renamed like xxxx.Service/xxx.Context
+- Entity: the closely related entity under the context/service
+- Table: the table name and the schema name
+
+```shell
+mix phx.gen.context Shippo Transaction shippo_transactions object_id:string:unique shipment_date:utc_datetime_usec eta:utc_datetime_usec order_id:string parcel_id:string rate_id:string tracking_number:string tracking_status:string tracking_url_provider:string label_url:text metadata:string length:float width:float height:float distance_unit:enum:cm:in:ft:m:mm:yd pound:integer ounce:float
+
+output:
+* creating lib/zero/shippos/transaction.ex
+* creating priv/repo/migrations/20230518070345_create_shippo_transaction.exs
+* creating lib/zero/shippos.ex
+* injecting lib/zero/shippos.ex
+* creating test/zero/shippos_test.exs
+* injecting test/zero/shippos_test.exs
+* creating test/support/fixtures/shippos_fixtures.ex
+* injecting test/support/fixtures/shippos_fixtures.ex
+
+Some of the generated database columns are unique. Please provide
+unique implementations for the following fixture function(s) in
+test/support/fixtures/shippos_fixtures.ex:
+
+    def unique_transaction_unique_tx_id do
+      raise "implement the logic to generate a unique transaction unique_tx_id"
+    end
+
+
+Remember to update your repository by running migrations:
+
+    $ mix ecto.migrate
+
+```
+
 ### Postgres Migration
 1. Generation
 ```zsh
