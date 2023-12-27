@@ -46,7 +46,7 @@ config :org, OrgService.Mailer, adapter: Swoosh.Adapters.Local
 #
 # Configures Elixir's Logger
 config :logger, :console,
-  format: "$time $metadata[$level] $message\n",
+  format: "$date $time [$level] $metadata$message\n",
   metadata: [:request_id]
 
 # Use Jason for JSON parsing in Phoenix
